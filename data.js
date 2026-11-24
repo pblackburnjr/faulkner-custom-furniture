@@ -2,7 +2,10 @@
 var P = 'assets/products/', F = 'assets/fabrics/';
 var CATEGORIES = [
   { id:'sectionals', name:'Sectionals', items:[
-    { name:'Abigail Sectional', price:'$4,850.00', img:P+'abigail-sectional.png', fabrics:['Phoenix Pearl','Hercules Navy'] },
+    { name:'Abigail Sectional', price:'$4,850.00', img:P+'abigail-sectional.png', variants:[
+      { name:'Phoenix Pearl', img:P+'abigail-sectional.png' },
+      { name:'Hercules Navy', img:P+'abigail-sectional-hercules-navy-high.png', swatch:F+'herculesnavy-high.jpg' }
+    ] },
     { name:'Carla Sectional',   price:'$4,850.00' },
     { name:'Promo Sectional',   price:'$4,850.00', img:P+'sectional2-high.png' }
   ]},
@@ -16,11 +19,27 @@ var CATEGORIES = [
     { name:'Abigail Chair', price:'$1,000.00' },
     { name:'Carla Chair',   price:'$1,000.00' },
     { name:'Claire Chair',  price:'$1,000.00', img:P+'claire-chair-screenshot-high.png' },
-    { name:'Deanna Chair',  price:'$1,000.00', img:P+'deanna-chair-high.jpg', fabrics:['Hailey Cotton','Phoenix Beige','Sugarshack Natural','Hailey Natural','Meow Pebble'] },
+    { name:'Deanna Chair',  price:'$1,000.00', img:P+'deanna-chair-high.jpg', variants:[
+      { name:'Hailey Cotton', img:P+'deanna-chair-high.jpg', swatch:F+'haileycotton-high.jpg' },
+      { name:'Phoenix Beige', img:P+'deanna-chair-phoenix-beige-high.png', swatch:F+'pheonixbeige-high.jpg' },
+      { name:'Sugarshack Natural', img:P+'deanna-chair-sugarshack-natural-high.png', swatch:F+'ss-natural-high.jpg' },
+      { name:'Hailey Natural', img:P+'deanna-chair-hailey-natural-high.png', swatch:F+'haileynatural-high.jpg' },
+      { name:'Meow Pebble', img:P+'deanna-chair-meow-pebble-high.png', swatch:F+'meowpebble-high.jpg' }
+    ] },
     { name:'Emory Chair',   price:'$1,000.00' },
     { name:'Estelle Chair', price:'$1,000.00' },
-    { name:'Nash Chair',    price:'$1,000.00', img:P+'nash-chair-high.png', fabrics:['Hailey Cotton','Sugarshack Hemp','Sugarshack Natural'] },
-    { name:'Terri Chair',   price:'$1,000.00', img:P+'terri-chair-ss-granite-high.png', fabrics:['Sugarshack Granite','White','Doyle','Sugarshack Beige','Meow Spa'] },
+    { name:'Nash Chair',    price:'$1,000.00', img:P+'nash-chair-high.png', variants:[
+      { name:'Hailey Cotton', img:P+'nash-chair-high.png', swatch:F+'haileycotton-high.jpg' },
+      { name:'Sugarshack Hemp', img:P+'nash-chair-sugarshack-hemp-high.png', swatch:F+'ss-hemp-high.jpg' },
+      { name:'Sugarshack Natural', img:P+'nash-chair-sugarshack-natural-high.png', swatch:F+'ss-natural-high.jpg' }
+    ] },
+    { name:'Terri Chair',   price:'$1,000.00', img:P+'terri-chair-ss-granite-high.png', variants:[
+      { name:'Sugarshack Granite', img:P+'terri-chair-ss-granite-high.png' },
+      { name:'White', img:P+'terri-chair-white-high.png' },
+      { name:'Doyle', img:P+'terri-chair-doyle-high.png' },
+      { name:'Sugarshack Beige', img:P+'terri-chair-sugarshack-beige-high.png', swatch:F+'ss-beige-high.jpg' },
+      { name:'Meow Spa', img:P+'terri-chair-meow-spa-high.png', swatch:F+'meowspa-high.jpg' }
+    ] },
     { name:'Westin Chair',  price:'$1,000.00', img:P+'westin-white-high.png' },
     { name:'Wynne Chair',   price:'$1,000.00', img:P+'wynne2-high.png' }
   ]},

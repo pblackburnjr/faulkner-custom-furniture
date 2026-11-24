@@ -50,14 +50,26 @@
     document.addEventListener('click',function(e){
       var b = e.target.closest('[data-detail]'); if(!b) return;
       var it = allItems().filter(function(i){return i.name===b.getAttribute('data-detail')})[0]; if(!it) return;
-      var fab = it.fabrics ? '<p><strong>Shown in:</strong> '+it.fabrics.map(esc).join(', ')+'</p>' : '';
+      var fab = it.variants ? '<div class="variants" role="group" aria-label="Fabric"><p class="v-label">Fabric: <strong data-vname aria-live="polite">'+esc(it.variants[0].name)+'</strong></p><div class="v-chips">'+
+        it.variants.map(function(v,i){
+          return '<button type="button" class="v-chip" data-vi="'+i+'" aria-pressed="'+(i===0)+'" aria-label="'+esc(v.name)+'" title="'+esc(v.name)+'"><img src="'+(v.swatch||v.img)+'" alt="" loading="lazy"></button>';
+        }).join('')+'</div></div>' : '';
       dlg.innerHTML = '<div class="dlg"><div class="pic">'+pic(it)+'</div><div class="info">'+
         '<button class="close" aria-label="Close" data-close>&times;</button>'+
         '<h2>'+esc(it.name)+'</h2><p class="price" style="font-size:1.3rem">'+esc(it.price?it.price+' <small>(base price, as listed in draft)</small>':'Request a quote')+'</p>'+
         '<p>Category: '+esc(it.cat)+'. Made to order in our Lincolnton, NC workshop and tailored to your space: choose the fabric and, where needed, the dimensions.</p>'+fab+
         '<p><span class="ph">[PLACEHOLDER: dimensions, materials and construction details for '+esc(it.name)+']</span></p>'+
         '<a class="btn" href="contact.html?product='+encodeURIComponent(it.name)+'#quote">Request a quote</a></div></div>';
+      dlg.currentItem = it;
       dlg.showModal();
+    });
+    dlg.addEventListener('click',function(e){
+      var c = e.target.closest('.v-chip'); if(!c || !dlg.currentItem) return;
+      var v = dlg.currentItem.variants[+c.getAttribute('data-vi')], im = $('.pic img',dlg), nm = $('[data-vname]',dlg);
+      if(!v || !im) return;
+      im.src = v.img; im.alt = dlg.currentItem.name+' in '+v.name;
+      if(nm) nm.textContent = v.name;
+      dlg.querySelectorAll('.v-chip').forEach(function(b){ b.setAttribute('aria-pressed', b===c); });
     });
     dlg.addEventListener('click',function(e){ if(e.target===dlg || e.target.hasAttribute('data-close')) dlg.close(); });
   }
