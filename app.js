@@ -56,7 +56,7 @@
         }).join('')+'</div></div>' : '';
       dlg.innerHTML = '<div class="dlg"><div class="pic">'+pic(it)+'</div><div class="info">'+
         '<button class="close" aria-label="Close" data-close>&times;</button>'+
-        '<h2>'+esc(it.name)+'</h2><p class="price" style="font-size:1.3rem">'+esc(it.price?it.price+' <small>(base price, as listed in draft)</small>':'Request a quote')+'</p>'+
+        '<h2>'+esc(it.name)+'</h2><p class="price" style="font-size:1.3rem">'+(it.price?esc(it.price)+' <small>(base price)</small>':'Request a quote')+'</p>'+
         '<p>Category: '+esc(it.cat)+'. Made to order in our Lincolnton, NC workshop and tailored to your space: choose the fabric and, where needed, the dimensions.</p>'+fab+
         '<p><span class="ph">[PLACEHOLDER: dimensions, materials and construction details for '+esc(it.name)+']</span></p>'+
         '<a class="btn" href="contact.html?product='+encodeURIComponent(it.name)+'#quote">Request a quote</a></div></div>';
